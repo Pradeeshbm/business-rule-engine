@@ -7,13 +7,29 @@ import com.example.pe.businessrule.model.Membership.MembershipStatus;
 import com.example.pe.businessrule.model.PhysicalProduct;
 import com.example.pe.businessrule.model.Video;
 
+/**
+ * A factory for creating PaymentPostProcessorChain object based on the item type.
+ * 
+ * @author pradeesh.kumar
+ */
 public final class PaymentPostProcessorFactory {
-
+	
+	/**
+	 * Private constructor to avoid instantiation of factory class
+	 */
 	private PaymentPostProcessorFactory() {}
 	
+	/**
+	 * Creates the the PostProcessor chain based on the item type. If item type
+	 * doesn't match any concrete type, returns DefaultPostProcessor chain to avoid
+	 * broken chain.
+	 *
+	 * @param item the item
+	 * @return the post processor chain
+	 */
 	public static PostProcessorChain create(Item item) {
 		if (item instanceof PhysicalProduct) {
-			return creatPhysicalProductChain(item);
+			return createPhysicalProductChain(item);
 		} else if (item instanceof Membership) {
 			return createMembershipChain(item);
 		} else if (item instanceof Video) {
@@ -23,7 +39,13 @@ public final class PaymentPostProcessorFactory {
 		return new PostProcessorChain(new DefaultPostProcessor());
 	}
 	
-	public static PostProcessorChain creatPhysicalProductChain(Item item) {
+	/**
+	 * Creates a new PaymentPostProcessor for Physical products
+	 *
+	 * @param item the item
+	 * @return the post processor chain
+	 */
+	public static PostProcessorChain createPhysicalProductChain(Item item) {
 		/** If it's a physical product, then Packing Receipt **/
 		PostProcessorChain packingChain = new PostProcessorChain(new PackingSlipPostProcessor());
 		PostProcessorChain commissionChain = new PostProcessorChain(new CommisionPaymentPostProcessor());
@@ -39,6 +61,12 @@ public final class PaymentPostProcessorFactory {
 		return packingChain;
 	}
 	
+	/**
+	 * Creates a new PaymentPostProcessor object for Membership new/upgrade payment.
+	 *
+	 * @param item the item
+	 * @return the post processor chain
+	 */
 	public static PostProcessorChain createMembershipChain(Item item) {
 		/** If it's a new membership, activate the membership, otherwise upgrade.
 		 * Send email to the customer for both the case **/

@@ -4,6 +4,11 @@ import java.time.LocalDate;
 
 import lombok.Data;
 
+/**
+ * Membership POJO
+ * 
+ * @author pradeesh.kumar
+ */
 @Data
 public class Membership extends Item {
 
@@ -13,6 +18,6 @@ public class Membership extends Item {
 	private LocalDate subscriptionEndData;
 	
 	public static enum MembershipStatus {
-		NEW, UPGRADE;
+		NEW, ACTIVE, UPGRADE;
 	}
 }
