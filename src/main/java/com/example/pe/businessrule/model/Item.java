@@ -7,4 +7,5 @@ public abstract class Item {
 
 	protected String itemName;
 	protected double price;
+	protected Receipt reciept;
 }

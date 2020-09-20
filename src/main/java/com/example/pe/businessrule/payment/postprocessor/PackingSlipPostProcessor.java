@@ -6,7 +6,7 @@ import com.example.pe.businessrule.model.PhysicalProduct;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class PackingSlipProcessor implements PaymentPostProcessor {
+public class PackingSlipPostProcessor implements PaymentPostProcessor {
 
 	@Override
 	public void process(Item item) {

@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.pe.businessrule.exception.PaymentException;
 import com.example.pe.businessrule.model.Item;
-import com.example.pe.businessrule.payment.postprocessor.PaymentPostProcessor;
+import com.example.pe.businessrule.payment.postprocessor.PostProcessorChain;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -13,10 +13,10 @@ import lombok.extern.slf4j.Slf4j;
 public class DefaultPaymentService implements PaymentService {
 
 	@Override
-	public void pay(Item forItem, PaymentPostProcessor postProcessor) {
+	public void pay(Item forItem, PostProcessorChain postProcessorChain) {
 		validatePayment(forItem);
 		process(forItem);
-		postProcessor.process(forItem);
+		postProcessorChain.execute(forItem);
 	}
 	
 	private static void validatePayment(Item forItem) {

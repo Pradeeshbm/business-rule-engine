@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data @AllArgsConstructor
-public class Book extends Item {
+public class Book extends PhysicalProduct {
 
 	private String isbnNumber;
 	private String author;

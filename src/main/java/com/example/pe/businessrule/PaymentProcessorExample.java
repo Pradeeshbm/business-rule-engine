@@ -14,6 +14,11 @@ public class PaymentProcessorExample {
 	private PaymentDelegate paymentDelegate;
 	
 	public void test() {
+		testBook();
+	}
+	
+	public void testBook() {
+		System.out.println("\n\n\n\n");
 		/** Payment example for Book **/
 		Item item = new Book("ISBN-991", "Paulo Coelo", "Penguine Publisher");
 		item.setItemName("The Alchemist");
