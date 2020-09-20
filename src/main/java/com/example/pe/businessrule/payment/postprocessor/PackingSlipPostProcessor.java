@@ -36,13 +36,13 @@ public class PackingSlipPostProcessor implements PaymentPostProcessor {
 		PhysicalProduct physicalProduct = (PhysicalProduct) item;
 		List<String> lineItems = new ArrayList<>();
 		
-		lineItems.add("--------------PACKING SLIP--------------");
-		lineItems.add("Name of item: " + item.getItemName());
-		lineItems.add("Width: " + physicalProduct.getWeight());
-		lineItems.add("Height: " + physicalProduct.getHeight());
-		lineItems.add("Weight: " + physicalProduct.getWeight());
-		lineItems.add("Price: " + item.getPrice());
-		lineItems.add("--------------END OF SLIP--------------");
+		lineItems.add("\n--------------PACKING SLIP--------------\n");
+		lineItems.add("Name of item: " + item.getItemName() + "\n");
+		lineItems.add("Width: " + physicalProduct.getWeight() + "\n");
+		lineItems.add("Height: " + physicalProduct.getHeight() + "\n");
+		lineItems.add("Weight: " + physicalProduct.getWeight() + "\n");
+		lineItems.add("Price: " + item.getPrice() + "\n");
+		lineItems.add("--------------END OF SLIP--------------\n");
 		System.out.println("\n\n" + lineItems.toString() + "\n\n");
 		return lineItems;
 	}

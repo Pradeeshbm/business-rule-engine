@@ -19,7 +19,6 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class PaymentProcessorExample {
 
-	/** The payment delegate. */
 	@Autowired
 	private PaymentDelegate paymentDelegate;
 	

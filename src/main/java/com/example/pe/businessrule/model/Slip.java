@@ -18,7 +18,12 @@ public class Slip implements Cloneable {
 	
 	@Override
 	public Slip clone() {
-		Slip cloned = this.clone();
+		Slip cloned;
+		try {
+			cloned = (Slip) super.clone();
+		} catch (CloneNotSupportedException e) {
+			cloned = new Slip();
+		}
 		cloned.setLineItems(new ArrayList<>(this.lineItems));
 		return cloned;
 	}

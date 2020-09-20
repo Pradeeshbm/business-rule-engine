@@ -15,6 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 public class VideoItemPostProcessor implements PaymentPostProcessor {
 	
 	private static final int AD_VIDEO_ID = 123;
+	private static final String VID_LEARNINGTOSKI = "Learning to Ski";
 	
 	private VideoRepository vidRepo;
 	
@@ -24,10 +25,12 @@ public class VideoItemPostProcessor implements PaymentPostProcessor {
 	
 	@Override
 	public void process(Item item) {
-		log.info("Retrieving ad video from db");
-		Video ad = vidRepo.getVideo(AD_VIDEO_ID);
-		vidRepo.addVideoToUser(ad, item.getUserId());
-		log.info("Added free {} video", ad.getItemName());
+		if (item.getItemName().equalsIgnoreCase(VID_LEARNINGTOSKI)) {
+			log.info("Retrieving ad video from db");
+			Video ad = vidRepo.getVideo(AD_VIDEO_ID);
+			vidRepo.addVideoToUser(ad, item.getUserId());
+			log.info("Added free {} video", ad.getItemName());
+		}
 	}
 
 }
