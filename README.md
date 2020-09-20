@@ -30,3 +30,7 @@ This class covers all the test scienarios.<br/>
 ### Important
 Please observe the console log message while running test cases.<br/>
 Every operation is logged by the logger<br/>
+
+### Author
+Pradeesh Kumar<br/>
+pradeeshbm@ymail.com<br/>
